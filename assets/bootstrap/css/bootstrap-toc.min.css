@@ -1,0 +1,72 @@
+
+
+nav[data-toggle=toc] .nav .nav {
+    display: none;
+    padding-bottom: 10px
+}
+
+nav[data-toggle=toc] .nav .nav>li>a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: 400
+}
+
+nav[data-toggle=toc] .nav>.active>ul {
+    display: block
+}
+
+
+nav[data-toggle='toc'] {
+  margin-top: -26px;
+  position: fixed;
+  margin-left: -200px;
+}
+
+.nav > li > a {
+    position: relative;
+    display: block;
+    font-size: 12px;
+    padding: 0px;
+    width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 980px) {
+  div[data-toggle="toc"],
+  nav.affix[data-toggle='toc'] {
+    display: none;
+  }
+
+  nav[data-toggle='toc'] .nav .nav {
+    display: block;
+  }
+}
+
+nav[data-toggle="toc"] .nav > .active:hover > a,
+nav[data-toggle="toc"] .nav > .active > a {
+    color: #997799 !important;
+    text-decoration: underline !important;
+}
+
+nav[data-toggle="toc"] .nav > li > a {
+    font-size: 12px;
+    text-decoration: none;
+    color: #5C5C5C !important;
+    font-weight: 500;
+    display: block;
+    line-height: 13px;
+    font-family: monospace,Lucida Grande,Segoe UI,Roboto Light,Tuffy !important;
+background-color: white;
+border-radius: 3px;
+margin: 1px;
+/*border: 1px solid #E9E8E7 !important;*/
+text-rendering: geometricprecision;
+}
+
+nav[data-toggle="toc"] ul, ol {
+    list-style-type: none;
+}
