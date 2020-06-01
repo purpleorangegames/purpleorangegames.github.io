@@ -45,7 +45,7 @@ alt="POG Logo" data-toggle="tooltip" data-placement="bottom" title="PurpleOrange
 <iframe src="https://www.patreon.com/platform/iframe?widget=become-patron-button&amp;redirectURI=http%3A%2F%2Fpurpleorangegames.com%2F%23&amp;creatorID=386996" scrolling="no" allowtransparency="true" frameborder="0" class="patreon-widget" title="Patreon Widget" style="position: static; visibility: visible; width: 176px; height: 34px;"></iframe>
 
 <div style="display:block;overflow:hidden;width: 148px;height: 35px;float: right;">
-<iframe frameborder="0" src="https://itch.io/embed/653506?border_width=0&amp;bg_color=3f2832" width="206" height="165" style="
+<iframe id="myiframe" frameborder="0" src="https://itch.io/embed/653506?border_width=0&amp;bg_color=3f2832" width="206" height="165" style="
     max-height: 40px;
     left: 10px;
     margin-left: -29px;
@@ -162,5 +162,12 @@ With this we should have our Alpha read to be deployed.
 If you want you can reach me at purplebonesgames at gmail.
 </p></blockquote>
 <hr>
+
+<script>
+var win = document.getElementById('myiframe').contentWindow || iframe;
+$(win).load(function(){
+  $(".button").html("Check it out on itch.io")}
+});
+</script>
 
 </html>
