@@ -57,6 +57,13 @@ hr {
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'ShareTechMono';
+  src: url('fonts/ShareTechMono-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 blockquote {
   border-left: .5em solid rgb(87, 102, 102);
   border-radius: 6px;
