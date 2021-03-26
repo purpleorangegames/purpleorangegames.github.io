@@ -41,8 +41,8 @@
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
       <link rel="icon" type="image/png" sizes="32x32" href="/flexpool/favicon-32x32.png">
       <link rel="icon" type="image/png" sizes="16x16" href="/flexpool/favicon-16x16.png">
-      <link rel="manifest" href="/manifest.json">
-      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0069ff">
+      <link rel="manifest" href="/flexpool/manifest.json">
+      <link rel="mask-icon" href="/flexpool/safari-pinned-tab.svg" color="#0069ff">
       <link rel="stylesheet" href="/flexpool/static/css/pagination.css?_=Nd7sDSTl9">
       <link rel="stylesheet" href="/flexpool/static/css/tables.css?_=Nd7sDSTl9">
       <link rel="stylesheet" href="/flexpool/static/css/account.css?_=Nd7sDSTl94">
@@ -50,7 +50,7 @@
       <title>Flexpool</title>
    </head>
    <body>
-      <nav style="top: 0px;">
+      <!--<nav style="top: 0px;">
          <div class="navbody">
             <div class="header noselect"><a class="logo" href="https://flexpool.io/en/"><img alt="Logo"> flexpool </a><button class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button></div>
             <ul class="navul">
@@ -60,9 +60,9 @@
                <li style="min-width:170px"><a href="https://flexpool.io/en/docs/help" class="help">Start mining</a></li>
             </ul>
          </div>
-      </nav>
-      <main>
-         <input id="inputWallet" value="" id="wallet-textarea-for-copy" style="display:none">
+      </nav>-->
+      <main style="margin-top: 30px;">
+		 <input value="" id="wallet-textarea-for-copy" style="display:none">
          <div class="account">
             <div class="account-stats">
                <div class="wallet">
@@ -87,26 +87,33 @@
                   <div class="info-card">Joined: <span class="first-joined"><span class="blank-element" style="display:inline-block;width:60px"></span></span></div>
                </div>
             </div>
-            <div class="settings">
+            <!--<div class="settings">
                <div class="btn" onclick="openSettings();">Settings</div>
+            </div>-->
+            <div class="settings">
+               <div class="btn" onclick="reloadData();">Reload</div>
             </div>
          </div>
          <div class="header-stats" id="main-header-stats">
-            <div class="stat">
+            <div class="stat" style="text-align: center;align-items: center;">
                <div class="sec">Workers Online/Offline</div>
                <div class="main high-letter-spacing" id="online-offline-workers"><mark><span class="online-workers">0</span></mark>/<span class="offline-workers">0</span></div>
+				<div class="sec">
+					Pool Hashrate
+					<div class="main" id="poolHashrate">&nbsp;</div>
+				</div>
             </div>
             <div class="stat">
                <div class="sec">Unpaid Balance</div>
                <div class="main">
-                  <div class="flexcol">
+                  <div class="flexcol" style="width:100%">
                      <div>
                         <span class="balance" id="balance">
                            <div class="blank-element"></div>
                         </span>
                         <div class="lower">ETH</div>
                      </div>
-                     <div class="gray subbalance"><span id="balance-usd">0</span>&nbsp;USD</div>
+                     <div class="gray subbalance"><span style="margin-left: auto;" id="balance-usd">0</span>&nbsp;USD</div>
                   </div>
                </div>
                <div id="payout-bar" class="hover-tooltip "></div>
@@ -121,11 +128,74 @@
                            <div class="blank-element"></div>
                         </span>
                      </div>
-                     <div class="gray subbalance">Approx. Reward:&nbsp;<span id="approx-next-block-reward">0</span>&nbsp;ETH</div>
+                     <div class="gray subbalance"><div style="width: 131px;">Approx. Reward:&nbsp;</div><span id="approx-next-block-reward" style="font-family: monospace;">0</span>&nbsp;ETH</div>
+					 <div class="gray subbalance"><div style="width: 131px;">Approx. Daily R.:&nbsp;</div><span id="approx-daily-reward" style="font-family: monospace;">0</span>&nbsp;ETH</div>
                   </div>
                </div>
             </div>
          </div>
+		 
+		 <br/>
+		 
+         <div class="header-stats" id="main-header-stats">
+			<div class="stat" style="align-items: center;text-align: center;">
+				<div class="sec">
+					Average Luck 24h
+					<div class="main" id="avgluck24"><mark class="luck-value" data-luck="">-</mark>&nbsp;</div>
+				</div>
+				<div class="sec">
+					Average Luck
+					<div class="main" id="avgluck"><mark class="luck-value" data-luck="">-</mark>&nbsp;</div>
+				</div>
+				<div class="sec">
+					Average Round Time
+					<div class="main" id="avgroundtime">&nbsp;</div>
+				</div>
+            </div>
+            <div class="stat">
+               <div class="main" style="display: block;">
+               <div class="sec">Total Paid</div>
+                  <div class="flexcol" style="padding-bottom: 5px;">
+                     <div>
+                        <span class="balance" id="totalPaidBalance">
+                           <div class="blank-element"></div>
+                        </span>
+                        <div class="lower">ETH</div>
+                     </div>
+                     <div class="gray subbalance"><span style="margin-left: auto;" id="totalPaidBalance-usd">0</span>&nbsp;USD</div>
+                  </div>
+               <div class="sec">Total Paid + Unpaid</div>
+                  <div class="flexcol">
+                     <div>
+                        <span class="balance" id="totalPaidBalanceUnpaid">
+                           <div class="blank-element"></div>
+                        </span>
+                        <div class="lower">ETH</div>
+                     </div>
+                     <div class="gray subbalance"><span style="margin-left: auto;" id="totalPaidBalanceUnpaid-usd">0</span>&nbsp;USD</div>
+                  </div>
+               </div>
+               <!--
+			   <div id="payout-bar" class="hover-tooltip "></div>
+               <div class="tooltip arrow-top balance-tooltip" id="tooltip-balance-bar" style="visibility: hidden; opacity: 0;"></div>
+			   -->
+            </div>
+			<div class="stat" style="align-items: center;text-align: center;">
+				<div class="sec">
+					Blocks Last 24h / Today
+					<div class="main" style="display: block;" id="blocksLast24">&nbsp;</div>
+				</div>
+				<div class="sec">
+					Blocks Per Day (Hashrate)
+					<div class="main" style="display: block;" id="blocksPerDay">&nbsp;</div>
+				</div>
+				<div class="sec">
+					Blocks Per Minute (Hashrate)
+					<div class="main" style="display: block;" id="blocksPerMinute">&nbsp;</div>
+				</div>
+            </div>
+         </div>
+		 
          <div class="select-dashboard-category">
             <ul>
                <li id="stats-selector" class="selector selector-selected" onclick="switchView(&quot;stats&quot;)"> Stats</li>
@@ -452,16 +522,16 @@
       <link rel="stylesheet" href="/flexpool/static/css/cswitch.css">
       <link href="https://fonts.googleapis.com/css?family=Montserrat:700,600,500&amp;family=Roboto+Mono:wght@600&amp;display=swap" rel="stylesheet">
       <script src="/flexpool/static/scripts/jquery-3.4.1.min.js"></script><input id="lang-code" value="en" hidden="">
-<script>LANGUAGE_CODE=$("#lang-code").val(),window.intercomSettings={app_id:"fdj6l8hj"}</script>
+      <script>LANGUAGE_CODE=$("#lang-code").val(),window.intercomSettings={app_id:"fdj6l8hj"}</script>
 	  <script src="/flexpool/static/scripts/main.js?_=Nd7sDSTl9"></script>
 	  <script src="/flexpool/static/scripts/highcharts.js"></script>
 	  <script src="/flexpool/static/scripts/moment.js"></script>
 	  <script src="/flexpool/static/scripts/nanobar.min.js">
 	  </script><script src="/flexpool/static/scripts/humanize-duration.js">
 	  </script><script src="/flexpool/static/scripts/util.js?_=Nd7sDSTl9"></script>
-	  <script>window.wallet="0xC8366d03F3F88cc0769efDa34B241f4eEDD11E36",window.intercomSettings.address=window.wallet</script>
+	  <script>window.wallet=window.location.search.split('?')[1],window.intercomSettings.address=window.wallet</script>
 
-	  <script>$('#inputWallet').attr('value',window.wallet)</script>
+	  <script>$('#wallet-textarea-for-copy').attr('value',window.wallet)</script>
 	  <script>$('#aWalletAddress').attr('href','https://etherscan.io/address/'+window.wallet)</script>
 	  <script>$('#fordesktopWallet').html(window.wallet)</script>
 	  <script>$('#formobileWallet').html(window.wallet)</script>	  
@@ -469,8 +539,8 @@
 
 	  <script src="/flexpool/static/scripts/pagination.js?_=Nd7sDSTl9"></script>
 	  <script src="/flexpool/static/scripts/paged-table.js?_=Nd7sDSTl9"></script>
-	  <script src="/flexpool/static/scripts/account.js?_=Nd7sDSTl96"></script> 
+	  <script src="/flexpool/static/scripts/account.js?_=Nd7sDSTl9999999999997"></script> 
       <style>@font-face{font-family:flexpool-icons;src:url("/flexpool/static/fonts/fp-icons.woff?_=Nd7sDSTl9") format('woff')}</style>
-      <script src="https://xtwj9bs7n2j9.statuspage.io/embed/script.js"></script>
+      <!--<script src="https://xtwj9bs7n2j9.statuspage.io/embed/script.js"></script>-->
    </body>
 </html>
