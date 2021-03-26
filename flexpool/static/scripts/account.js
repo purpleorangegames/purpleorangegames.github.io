@@ -534,13 +534,13 @@ function loadData() {
 				var date = new Date(t1.result.data[i].timestamp * 1000);
 				day=String(date.getDate()).padStart(2, '0');
 				hours = Math.abs(currentTime - date) / 36e5;
-				console.log(currentHour,date.getHours(),hours);
+				//console.log(currentHour,date.getHours(),hours);
 				if (currentDay==day) countToday=countToday+1;
 				if (hours<24) { count24=count24+1; luck=luck+t1.result.data[i].luck; }
 			}
 		}});
 		} while (hours<24)
-		console.log(currentDay,day,hours,countToday,count24,formatLuck(luck/count24,true),formatLuck(luck/count24,false));
+		//console.log(currentDay,day,hours,countToday,count24,formatLuck(luck/count24,true),formatLuck(luck/count24,false));
         luck=luck/count24;
         $("#avgluck24").css("display", ""), 
 		$("#avgluck24").html(`<mark class="luck-value">${formatLuck(luck,true)}</mark>% <mark class="luck-value" style="color:orange;padding-left: 10px;">${formatLuck(luck,false)}</mark>%`), 
