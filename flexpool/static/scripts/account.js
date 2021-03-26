@@ -411,8 +411,10 @@ async function copyAddress() {
 
 function reloadData() {
 	$('.nanobar').remove();
-	$('tr').remove()
-    loadData();	
+	$('tr').remove();
+	renderStats("");
+	render_payments_chart();
+	loadData();
 }
 
 function loadBalance(e) {
