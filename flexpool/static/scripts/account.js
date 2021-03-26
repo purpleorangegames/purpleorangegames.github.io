@@ -39,11 +39,11 @@ function renderHeader(e) {
 
 function renderPaymentsData(e) {
     $.get(`https://flexpool.io/api/v1/miner/${window.wallet}/totalPaid`, {}, (function(t) {
-        totalPaid = t.result / Math.pow(10, 18), $(".total-paid").html(Math.round(100 * totalPaid) / 100), $(".total-paid-usd").html(formatMoney(totalPaid * e))
+        totalPaid = t.result / Math.pow(10, 18), $(".total-paid").html(/*Math.round*/((100 * totalPaid) / 100).toFixed(4)), $(".total-paid-usd").html(formatMoney(totalPaid * e))
     })).fail((function(e) {
         console.error("Unable to get total paid", e)
     })), $.get(`https://flexpool.io/api/v1/miner/${window.wallet}/totalDonated`, {}, (function(t) {
-        totalDonated = t.result / Math.pow(10, 18), $(".total-donated").html(Math.round(100 * totalDonated) / 100), $(".total-donated-usd").html(formatMoney(totalDonated * e))
+        totalDonated = t.result / Math.pow(10, 18), $(".total-donated").html(/*Math.round*/((100 * totalDonated) / 100).toFixed(4)), $(".total-donated-usd").html(formatMoney(totalDonated * e))
     })).fail((function(e) {
         console.error("Unable to get total donated", e)
     })), $.get(`https://flexpool.io/api/v1/miner/${window.wallet}/paymentCount`, {}, (function(e) {
