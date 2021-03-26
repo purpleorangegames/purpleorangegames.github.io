@@ -1,3 +1,8 @@
+Number.prototype.countDecimals = function () {
+    if(Math.floor(this.valueOf()) === this.valueOf()) return 0;
+    return this.toString().split(".")[0].length || 0; 
+}
+
 function getRandomIntInclusive(e, t) {
     return e = Math.ceil(e), t = Math.floor(t), Math.floor(Math.random() * (t - e + 1)) + e
 }
@@ -444,10 +449,10 @@ function loadBalance(e) {
 		$.get(`https://flexpool.io/api/v1/miner/${window.wallet}/roundShare`, {}, (function(e) {
             $("#round-share-percent").html(Math.round(100 * e.result * 1e4) / 1e4 + "%"), 
 		    $.get("https://flexpool.io/api/v1/pool/averageBlockReward", {}, (function(t) {
-                $("#approx-next-block-reward").html("" + /*Math.round*/(e.result * t.result / Math.pow(10, 18) /* * 1e4*/).toFixed(8)/* / 1e4*/)
+                $("#approx-next-block-reward").html("" + /*Math.round*/(e.result * t.result / Math.pow(10, 18) /* * 1e4*/).toFixed(8-(e.result * t.result / Math.pow(10, 18)).countDecimals())/* / 1e4*/)
             }))
 		    $.get(`https://flexpool.io/api/v1/miner/${window.wallet}/estimatedDailyRevenue/`, {}, (function(t) {
-                $("#approx-daily-reward").html("" + /*Math.round*/(t.result / Math.pow(10, 18) /* * 1e4*/).toFixed(8)/* / 1e4*/)
+                $("#approx-daily-reward").html("" + /*Math.round*/(t.result / Math.pow(10, 18) /* * 1e4*/).toFixed(8-(t.result / Math.pow(10, 18)).countDecimals())/* / 1e4*/)
             }))
         })), $(".payout-percentage").html(Math.round(payoutPercentage)), bar.go(payoutPercentage)
 		}))
