@@ -532,6 +532,11 @@ function loadData() {
 		}));
 	}));
     //
+	$.get(`https://flexpool.io/api/v1/pool/currentLuck`, {}, (function(t) {
+		$("#avgluckCurrent").css("display", ""), 
+		$("#avgluckCurrent").html(`<mark class="luck-value">${formatLuck(t.result,true)}</mark>% <mark class="luck-value" style="color:orange;padding-left: 10px;">${formatLuck(t.result,false)}</mark>%`), 
+		$("#avgluckCurrent mark").attr("data-luck", t.result)
+	}));
 
 	$.get(`https://flexpool.io/api/v1/pool/hashrate`, {}, (function(t) {	
 		var currentTime = new Date();
@@ -558,8 +563,8 @@ function loadData() {
 		}});
 		} while (hours<24)
 		//console.log(currentDay,day,hours,countToday,count24,formatLuck(luck/count24,true),formatLuck(luck/count24,false));
-        luck=luck/count24;
-        $("#avgluck24").css("display", ""), 
+        	luck=luck/count24;
+        	$("#avgluck24").css("display", ""), 
 		$("#avgluck24").html(`<mark class="luck-value">${formatLuck(luck,true)}</mark>% <mark class="luck-value" style="color:orange;padding-left: 10px;">${formatLuck(luck,false)}</mark>%`), 
 		$("#avgluck24 mark").attr("data-luck", luck)
 		
