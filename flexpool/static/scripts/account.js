@@ -533,9 +533,9 @@ function loadData() {
 	}));
     //
 	$.get(`https://flexpool.io/api/v1/pool/currentLuck`, {}, (function(t) {
-		$("#avgluckCurrent").css("display", ""), 
-		$("#avgluckCurrent").html(`<mark class="luck-value">${formatLuck(t.result,true)}</mark>% <mark class="luck-value" style="color:orange;padding-left: 10px;">${formatLuck(t.result,false)}</mark>%`), 
-		$("#avgluckCurrent mark").attr("data-luck", t.result)
+		$("#currentluck").css("display", ""), 
+		$("#currentluck").html(`<mark class="luck-value">${formatLuck(t.result,true)}</mark>% <mark class="luck-value" style="color:orange;padding-left: 10px;">${formatLuck(t.result,false)}</mark>%`), 
+		$("#currentluck mark").attr("data-luck", t.result)
 	}));
 
 	$.get(`https://flexpool.io/api/v1/pool/hashrate`, {}, (function(t) {	
