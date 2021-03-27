@@ -557,7 +557,7 @@ function loadData() {
 				if (gotLastBlockTime==false)
 				{
 					gotLastBlockTime=true;
-					lastBlockTime=date;
+					lastBlockTime=lastBlockTime-date;
 				}
 				day = String(date.getDate()).padStart(2, '0');
 				hours = Math.abs(currentTime - date) / 36e5;
