@@ -575,7 +575,7 @@ function loadData() {
 		$("#avgluck24").html(`<mark class="luck-value">${formatLuck(luck,true)}</mark>% <mark class="luck-value" style="color:orange;padding-left: 10px;">${formatLuck(luck,false)}</mark>%`), 
 		$("#avgluck24 mark").attr("data-luck", luck)
 		$("#blocksLast24").html(count24+" / "+countToday);
-		$("#blocksLast24Uncle").html(count24Uncle+" / "+countTodayUncle);
+		$("#blocksLast24Uncle").html("<mark style='color:#752c2c;'>"+count24Uncle+"</mark> / <mark style='color:#752c2c;'>"+countTodayUncle+"</mark>");
 		$("#timeSinceLastBlock").html(humanizeDuration(lastBlockTime, 
 		{
 			units: ["d", "h", "m"],
