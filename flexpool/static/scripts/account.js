@@ -542,7 +542,7 @@ function loadData() {
 		var currentTime = new Date();
 		var currentDay=String(currentTime.getDate()).padStart(2, '0'),
 			day=String(currentTime.getDate()).padStart(2, '0'),
-			currentHour=currentTime.getHours(), count=0, countToday=0, count24=0, luck=0, hours=0, lastBlockTime=new Date(), gotLastBlockTime=false;
+			currentHour=currentTime.getHours(), count=0, countToday=0, countTodayUncle=0, count24=0, count24Uncle=0, luck=0, hours=0, lastBlockTime=new Date(), gotLastBlockTime=false;
 		do {
 		$.ajax({
 		async: false,
@@ -563,7 +563,9 @@ function loadData() {
 				hours = Math.abs(currentTime - date) / 36e5;
 				//console.log(currentHour,date.getHours(),hours);
 				if (currentDay==day) countToday=countToday+1;
+				if (currentDay==day && t1.result.data[i].type=="uncle") countTodayUncle=countTodayUncle+1;
 				if (hours<24) { count24=count24+1; luck=luck+t1.result.data[i].luck; }
+				if (hours<24 && t1.result.data[i].type=="uncle") { count24Uncle=count24Uncle+1; }
 			}
 		}});
 		} while (hours<24)
@@ -573,6 +575,7 @@ function loadData() {
 		$("#avgluck24").html(`<mark class="luck-value">${formatLuck(luck,true)}</mark>% <mark class="luck-value" style="color:orange;padding-left: 10px;">${formatLuck(luck,false)}</mark>%`), 
 		$("#avgluck24 mark").attr("data-luck", luck)
 		$("#blocksLast24").html(count24+" / "+countToday);
+		$("#blocksLast24Uncle").html(count24Uncle+" / "+countTodayUncle);
 		$("#timeSinceLastBlock").html(humanizeDuration(lastBlockTime, 
 		{
 			units: ["d", "h", "m"],
