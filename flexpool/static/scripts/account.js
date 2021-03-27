@@ -557,7 +557,7 @@ function loadData() {
 				if (gotLastBlockTime==false)
 				{
 					gotLastBlockTime=true;
-					lastBlockTime=lastBlockTime-date;
+					lastBlockTime=lastBlockTime.getTime()-date.getTime();
 				}
 				day = String(date.getDate()).padStart(2, '0');
 				hours = Math.abs(currentTime - date) / 36e5;
@@ -573,7 +573,7 @@ function loadData() {
 		$("#avgluck24").html(`<mark class="luck-value">${formatLuck(luck,true)}</mark>% <mark class="luck-value" style="color:orange;padding-left: 10px;">${formatLuck(luck,false)}</mark>%`), 
 		$("#avgluck24 mark").attr("data-luck", luck)
 		$("#blocksLast24").html(count24+" / "+countToday);
-		$("#timeSinceLastBlock").html(humanizeDuration(lastBlockTime.getTime(), 
+		$("#timeSinceLastBlock").html(humanizeDuration(lastBlockTime, 
 		{
 			units: ["d", "h", "m"],
 			maxDecimalPoints: 2,
