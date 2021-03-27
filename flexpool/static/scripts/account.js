@@ -447,15 +447,22 @@ function loadBalance(e) {
                 language: LANGUAGE_CODE
             }) + "."))
         })), $(".payout-percentage").html(Math.round(payoutPercentage)),
-		$.get(`https://flexpool.io/api/v1/miner/${window.wallet}/roundShare`, {}, (function(e) {
-            $("#round-share-percent").html(Math.round(100 * e.result * 1e4) / 1e4 + "%"), 
-		    $.get("https://flexpool.io/api/v1/pool/averageBlockReward", {}, (function(t) {
-                $("#approx-next-block-reward").html("" + /*Math.round*/(e.result * t.result / Math.pow(10, 18) /* * 1e4*/).toFixed(8-(e.result * t.result / Math.pow(10, 18)).countDecimals())/* / 1e4*/)
+	     $.get(`https://flexpool.io/api/v1/miner/${window.wallet}/roundShare`, {}, (function(e2) {
+                $("#round-share-percent").html(Math.round(100 * e2.result * 1e4) / 1e4 + "%"), 
+		$.get("https://flexpool.io/api/v1/pool/averageBlockReward", {}, (function(t) {
+                $("#approx-next-block-reward").html("" + /*Math.round*/(e2.result * t.result / Math.pow(10, 18) /* * 1e4*/).toFixed(8-(e2.result * t.result / Math.pow(10, 18)).countDecimals())/* / 1e4*/)
             }))
-		    $.get(`https://flexpool.io/api/v1/miner/${window.wallet}/estimatedDailyRevenue/`, {}, (function(t) {
+	    $.get(`https://flexpool.io/api/v1/miner/${window.wallet}/estimatedDailyRevenue/`, {}, (function(t) {
                 $("#approx-daily-reward").html("" + /*Math.round*/(t.result / Math.pow(10, 18) /* * 1e4*/).toFixed(8-(t.result / Math.pow(10, 18)).countDecimals())/* / 1e4*/),
                 $("#approx-weekly-reward").html("" + /*Math.round*/((7*t.result) / Math.pow(10, 18) /* * 1e4*/).toFixed(8-((7*t.result) / Math.pow(10, 18)).countDecimals())/* / 1e4*/),
                 $("#approx-monthly-reward").html("" + /*Math.round*/(((new Date(new Date().getFullYear(), new Date().getMonth(), 0).getDate())*t.result) / Math.pow(10, 18) /* * 1e4*/).toFixed(8-(((new Date(new Date().getFullYear(), new Date().getMonth(), 0).getDate())*t.result) / Math.pow(10, 18)).countDecimals())/* / 1e4*/)
+		    
+		,getEthPrice((function(e) {
+            		$("#approx-next-block-reward-usd").html(formatMoney(parseFloat($("#approx-next-block-reward").html()) * e))
+            		$("#approx-daily-reward-usd").html(formatMoney(parseFloat($("#approx-daily-reward").html()) * e))
+            		$("#approx-weekly-reward-usd").html(formatMoney(parseFloat($("#approx-weekly-reward").html()) * e))
+            		$("#approx-monthly-reward-usd").html(formatMoney(parseFloat($("#approx-monthly-reward").html()) * e))
+        	}))
             }))
         })), $(".payout-percentage").html(Math.round(payoutPercentage)), bar.go(payoutPercentage)
 		}))
