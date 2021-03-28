@@ -578,7 +578,7 @@ function loadData() {
 		$("#blocksLast24Uncle").html("<mark style='color:#752c2c;'>"+count24Uncle+"</mark> / <mark style='color:#752c2c;'>"+countTodayUncle+"</mark>");
 		$("#timeSinceLastBlock").html(humanizeDuration(lastBlockTime, 
 		{
-			units: ["d", "h", "m"],
+			largest: 1,
 			maxDecimalPoints: 2,
 			language: LANGUAGE_CODE
 		}))
