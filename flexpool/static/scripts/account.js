@@ -559,7 +559,11 @@ function loadData() {
 		$("#gasPrices").html(t.result.SafeGasPrice+" / "+t.result.ProposeGasPrice+" / "+t.result.FastGasPrice)
 	}));
 	
+	$.get(`https://flexpool.io/api/v1/miner/${window.wallet}/details`, {}, (function(e) {
+	    $("currentGasSettings").html(e.result.max_fee_price)
+	}));
 
+	
 	$.get(`https://flexpool.io/api/v1/pool/hashrate`, {}, (function(t) {	
 		var currentTime = new Date();
 		var currentDay=String(currentTime.getDate()).padStart(2, '0'),
