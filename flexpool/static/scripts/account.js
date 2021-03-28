@@ -490,6 +490,7 @@ function applyPoolDonation(e) {
     return e *= 100, "0x908b05a2500d55f29737af4081C4AeBb5B78F445" == window.wallet ? ["Dogfucker", "brown"] : "0x3D7193B546A12d287e54c1d6aaC3bf15B82bE59d" == window.wallet || "0x5655cEEc003551c3d9293D6130d5b2b366fe99B4" == window.wallet ? ["Hero", "hero"] : "0x897725d538c796a22C76646FBdB48D9b57CEB2FF" == window.wallet || "0x4368d11f47764B3912127B70e8647Dd031955A7C" == window.wallet ? ["Hero", "hero-rainbow"] : "0x80562C86Bdfc8E201d651a03Fc5D2dE7fa106647" == window.wallet ? ["CHRIS", "vip"] : "0x3B163A8e17cA6FC4522c2dd0a883357106386784" == window.wallet ? ["000-ILLUMINATI", "yellow"] : e < .4 ? ["Freeloader", "freeloader"] : e > 1 && e < 5 ? ["VIP", "vip"] : e > 2 ? ["MVP", "mvp"] : ["Loyal Miner", "loyalminer"]
 }
 
+var reloadTimer=0
 function loadData() {
     $.get(`https://flexpool.io/api/v1/miner/${window.wallet}/details`, {}, (function(e) {
         loadBalance(e.result.min_payout_threshold);
