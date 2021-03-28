@@ -554,6 +554,11 @@ function loadData() {
 		$("#currentluck").html(`<mark class="luck-value">${formatLuck(t.result,true)}</mark>% <mark class="luck-value" style="color:orange;padding-left: 10px;">${formatLuck(t.result,false)}</mark>%`), 
 		$("#currentluck mark").attr("data-luck", t.result)
 	}));
+	
+	.get(`https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=97P7K57FXX34M489NFZWWKKX4V8EF27RHW`, {}, (function(t) {
+		$("#gasPrices").html(t.result.SafeGasPrice+" / "+t.result.ProposeGasPrice+" / "+t.result.FastGasPrice), 
+	}));
+	
 
 	$.get(`https://flexpool.io/api/v1/pool/hashrate`, {}, (function(t) {	
 		var currentTime = new Date();
