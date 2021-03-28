@@ -577,12 +577,22 @@ function loadData() {
 		$("#avgluck24 mark").attr("data-luck", luck)
 		$("#blocksLast24").html(count24+"<mark style='color:#752c2c;font-size: 24px;padding-left: 4px;'>"+count24Uncle+"</mark> / "+countToday+"<mark style='color:#752c2c;font-size: 24px;padding-left: 4px;'>"+countTodayUncle+"</mark>");
 		$("#minedETH").html(reward24.toFixed(1)+" / "+rewardToday.toFixed(1));
+		
+		console.log(lastBlockTime);
+		if (lastBlockTime<3600000)
+		$("#timeSinceLastBlock").html(humanizeDuration(lastBlockTime, 
+		{
+			units: ["m"],
+			maxDecimalPoints: 1,
+			language: LANGUAGE_CODE
+		}));
+		else		
 		$("#timeSinceLastBlock").html(humanizeDuration(lastBlockTime, 
 		{
 			units: ["h"],
 			maxDecimalPoints: 2,
 			language: LANGUAGE_CODE
-		}))
+		}));
 		
 	}));
 
