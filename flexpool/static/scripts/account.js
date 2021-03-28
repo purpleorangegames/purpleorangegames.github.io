@@ -34,6 +34,15 @@ function renderStats(e) {
 function renderHeader(e) {
     url = "" == e ? `https://flexpool.io/api/v1/miner/${window.wallet}/stats/` : `https://flexpool.io/api/v1/worker/${window.wallet}/${e}/stats/`, $.get(url, {}, (function(e) {
         data = e.result, effective_hashrate = sif(data.current.effective_hashrate), average_effective = sif(data.daily.effective_hashrate), reported_hashrate = sif(data.current.reported_hashrate), $("#effective_hashrate").html(`<mark class="big">${effective_hashrate[0]}</mark> ${effective_hashrate[1]}H/s`), $("#average_hashrate").html(`<mark class="big">${average_effective[0]}</mark> ${average_effective[1]}H/s`), $("#reported_hashrate").html(`<mark class="big">${reported_hashrate[0]}</mark> ${reported_hashrate[1]}H/s`), valid_shares = data.daily.valid_shares, stale_shares = data.daily.stale_shares, invalid_shares = data.daily.invalid_shares, $("#valid_shares").html(`<mark class="big">${valid_shares}</mark>`), $("#stale_shares").html(`<mark class="big">${stale_shares}</mark>`), $("#invalid_shares").html(`<mark class="big">${invalid_shares}</mark>`), total_shares = valid_shares + stale_shares + invalid_shares, total_shares > 0 && (fdata = Math.round(valid_shares / total_shares * 1e4) / 100, isNaN(fdata) || $("#valid_shares_percentage").html(fdata), fdata = Math.round(valid_shares / total_shares * 1e3) / 10, isNaN(fdata) || $("#valid_shares_percentage_big").html(fdata), fdata = Math.round(stale_shares / total_shares * 1e3) / 10, isNaN(fdata) || $("#stale_shares_percentage").html(fdata), fdata = Math.round(invalid_shares / total_shares * 1e3) / 10, isNaN(fdata) || $("#invalid_shares_percentage").html(fdata))
+	,$("#effective_hashrate2").html($("#effective_hashrate").html())
+	,$("#average_hashrate2").html($("#average_hashrate").html())
+	,$("#reported_hashrate2").html($("#reported_hashrate").html())
+	,$("#valid_shares2").html($("#valid_shares").html())
+	,$("#stale_shares2").html($("#stale_shares").html())
+	,$("#invalid_shares2").html($("#invalid_shares").html())
+	,$("#valid_shares_percentage2").html($("#valid_shares_percentage").html())
+	,$("#stale_shares_percentage2").html($("#stale_shares_percentage").html())
+	,$("#invalid_shares_percentage2").html($("#invalid_shares_percentage").html())
     }))
 }
 
