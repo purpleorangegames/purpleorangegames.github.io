@@ -440,8 +440,14 @@ function loadBalance(e) {
             $("#balance-usd").html(formatMoney(balance * e))
         })), bar = new Nanobar({
             target: document.getElementById("payout-bar")
-        }), payoutPercentage = t.result / e * 100, estimatedDailyProfitTooltipRequired = !0, payoutPercentage >= 100 && ($("#payout-bar").addClass("green"), $("#tooltip-balance-bar").html(_("100% of payout limit reached.<br>You will be paid in the next payment round.")), payoutPercentage = 99.99999999, estimatedDailyProfitTooltipRequired = !1), $.get(`https://flexpool.io/api/v1/miner/${window.wallet}/estimatedDailyRevenue/`, {}, (function(a) {
-            estimatedDailyProfitTooltipRequired && (payoutETA = (e - t.result) / a.result * 86400, $("#tooltip-balance-bar").html(String(Math.round(payoutPercentage)) + "% " + _("of payout limit reached.<br>Payout limit would be reached in") + " " + humanizeDuration(1e3 * payoutETA, {
+        }), payoutPercentage = t.result / e * 100, estimatedDailyProfitTooltipRequired = !0, payoutPercentage >= 100 && ($("#payout-bar").addClass("green"), $("#timeToGetPaid").html(""), $("#tooltip-balance-bar").html(_("100% of payout limit reached.<br>You will be paid in the next payment round.")), payoutPercentage = 99.99999999, estimatedDailyProfitTooltipRequired = !1), $.get(`https://flexpool.io/api/v1/miner/${window.wallet}/estimatedDailyRevenue/`, {}, (function(a) {
+            estimatedDailyProfitTooltipRequired && (payoutETA = (e - t.result) / a.result * 86400, 
+		$("#timeToGetPaid").html(humanizeDuration(1e3 * payoutETA, {
+                units: ["d", "h", "m"],
+		maxDecimalPoints: 2,
+                language: LANGUAGE_CODE
+            }) + ".")),
+		$("#tooltip-balance-bar").html(String(Math.round(payoutPercentage)) + "% " + _("of payout limit reached.<br>Payout limit would be reached in") + " " + humanizeDuration(1e3 * payoutETA, {
                 units: ["d", "h", "m"],
 		maxDecimalPoints: 2,
                 language: LANGUAGE_CODE
