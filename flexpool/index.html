@@ -89,10 +89,37 @@
             </div>
             <!--<div class="settings">
                <div class="btn" onclick="openSettings();">Settings</div>
-            </div>-->
+            </div>
             <div class="settings">
                <div class="btn" onclick="reloadData();">Reload</div>
+            </div>-->
+		 
+	    <div class="settings">
+<div class="btn" onclick="var reloadTimer=self.setInterval(reloadData, 120000);" style="
+    height: 10px;
+    margin-bottom: 2px;
+    padding: 6px;
+    padding-top: 4px;
+    padding-bottom: 12px;
+    margin-top: -20px;
+    background-color: #412263;
+">Start Refresh</div><div class="btn" onclick="window.clearInterval(reloadTimer);" style="
+    height: 10px;
+    margin-bottom: 2px;
+    padding: 6px;
+    padding-top: 4px;
+    padding-bottom: 12px;
+    background-color: #412263;
+">Stop Refresh</div>
+    
+    <div class="btn" onclick="reloadData();" style="
+    height: 10px;
+    padding: 6px;
+    padding-top: 4px;
+    padding-bottom: 12px;
+">Reload</div>
             </div>
+		 
          </div>
          <div class="header-stats" id="main-header-stats">
             <div class="stat" style="text-align: center;align-items: center;">
