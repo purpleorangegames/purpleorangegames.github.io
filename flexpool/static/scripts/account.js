@@ -542,7 +542,8 @@ function loadData() {
 		var currentTime = new Date();
 		var currentDay=String(currentTime.getDate()).padStart(2, '0'),
 			day=String(currentTime.getDate()).padStart(2, '0'),
-			currentHour=currentTime.getHours(), count=0, countToday=0, countTodayUncle=0, count24=0, count24Uncle=0, luck=0, hours=0, lastBlockTime=new Date(), gotLastBlockTime=false;
+			currentHour=currentTime.getHours(), count=0, countToday=0, countTodayUncle=0, count24=0, count24Uncle=0, 
+		    	luck=0, hours=0, lastBlockTime=new Date(), gotLastBlockTime=false, reward24=0, rewardToday=0;
 		do {
 		$.ajax({
 		async: false,
@@ -562,9 +563,9 @@ function loadData() {
 				day = String(date.getDate()).padStart(2, '0');
 				hours = Math.abs(currentTime - date) / 36e5;
 				//console.log(currentHour,date.getHours(),hours);
-				if (currentDay==day) countToday=countToday+1;
+				if (currentDay==day) { countToday=countToday+1; rewardToday=rewardToday+(Math.round(t1.result.data[i].total_rewards / Math.pow(10, 18) * 100) / 100); }
 				if (currentDay==day && t1.result.data[i].type=="uncle") countTodayUncle=countTodayUncle+1;
-				if (hours<24) { count24=count24+1; luck=luck+t1.result.data[i].luck; }
+				if (hours<24) { count24=count24+1; luck=luck+t1.result.data[i].luck; reward24=reward24+(Math.round(t1.result.data[i].total_rewards / Math.pow(10, 18) * 100) / 100); }
 				if (hours<24 && t1.result.data[i].type=="uncle") { count24Uncle=count24Uncle+1; }
 			}
 		}});
@@ -575,7 +576,7 @@ function loadData() {
 		$("#avgluck24").html(`<mark class="luck-value">${formatLuck(luck,true)}</mark>% <mark class="luck-value" style="color:orange;padding-left: 10px;">${formatLuck(luck,false)}</mark>%`), 
 		$("#avgluck24 mark").attr("data-luck", luck)
 		$("#blocksLast24").html(count24+"<mark style='color:#752c2c;font-size: 24px;padding-left: 4px;'>"+count24Uncle+"</mark> / "+countToday+"<mark style='color:#752c2c;font-size: 24px;padding-left: 4px;'>"+countTodayUncle+"</mark>");
-		//$("#blocksLast24Uncle").html("<mark style='color:#752c2c;'>"+count24Uncle+"</mark> / <mark style='color:#752c2c;'>"+countTodayUncle+"</mark>");
+		$("#minedETH").html(reward24+" / "+rewardToday);
 		$("#timeSinceLastBlock").html(humanizeDuration(lastBlockTime, 
 		{
 			units: ["h"],
