@@ -560,7 +560,7 @@ function loadData() {
 	}));
 	
 	$.get(`https://flexpool.io/api/v1/miner/${window.wallet}/details`, {}, (function(e) {
-	    $("currentGasSettings").html(e.result.max_fee_price)
+	    $("#currentGasSettings").html(e.result.max_fee_price)
 	}));
 
 	
