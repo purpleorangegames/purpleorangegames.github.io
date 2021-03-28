@@ -556,7 +556,7 @@ function loadData() {
 	}));
 	
 	$.get(`https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=97P7K57FXX34M489NFZWWKKX4V8EF27RHW`, {}, (function(t) {
-		$("#gasPrices").html(t.result.SafeGasPrice+" / "+t.result.ProposeGasPrice+" / "+t.result.FastGasPrice), 
+		$("#gasPrices").html(t.result.SafeGasPrice+" / "+t.result.ProposeGasPrice+" / "+t.result.FastGasPrice)
 	}));
 	
 
