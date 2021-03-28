@@ -95,7 +95,7 @@
             </div>-->
 		 
 	    <div class="settings">
-<div class="btn" onclick="var reloadTimer=self.setInterval(reloadData, 120000);" style="
+<div class="btn" onclick="reloadTimer=self.setInterval(reloadData, 120000);$('#startRefresh').style('background-color','#323233');$('#stopRefresh').style('background-color','#412263');" style="
     height: 10px;
     margin-bottom: 2px;
     padding: 6px;
@@ -103,13 +103,13 @@
     padding-bottom: 12px;
     margin-top: -20px;
     background-color: #412263;
-">Start Refresh</div><div class="btn" onclick="window.clearInterval(reloadTimer);" style="
+" id="startRefresh">Start Refresh</div><div id="stopRefresh" class="btn" onclick="window.clearInterval(reloadTimer);$('#startRefresh').style('background-color','#412263');$('#stopRefresh').style('background-color','#323233');" style="
     height: 10px;
     margin-bottom: 2px;
     padding: 6px;
     padding-top: 4px;
     padding-bottom: 12px;
-    background-color: #412263;
+    background-color: #323233;
 ">Stop Refresh</div>
     
     <div class="btn" onclick="reloadData();" style="
