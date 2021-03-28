@@ -95,7 +95,15 @@
             </div>-->
 		 
 	    <div class="settings">
-<div class="btn" onclick="reloadTimer=self.setInterval(reloadData, 120000);$('#startRefresh').css('background-color','#323233');$('#stopRefresh').css('background-color','#412263');" style="
+<div class="btn" onclick="reloadTimer=self.setInterval(reloadData, 120000);
+			  $('#startRefresh').css('background-color','#323233');
+			  $('#stopRefresh').css('background-color','#412263');
+			  var startCountdown = setInterval(function() {
+				var seconds = parseInt($('#countdown').html());
+				seconds--;
+				if (seconds>0) $('#countdown').html(seconds);
+			  }, 1000);"
+style="
     height: 10px;
     margin-bottom: 2px;
     padding: 6px;
@@ -105,7 +113,10 @@
     background-color: #412263;
 " id="startRefresh">Start Refresh</div>
 		    
-<div id="stopRefresh" class="btn" onclick="window.clearInterval(reloadTimer);$('#startRefresh').css('background-color','#412263');$('#stopRefresh').css('background-color','#323233');" style="
+<div id="stopRefresh" class="btn" onclick="window.clearInterval(reloadTimer);window.clearInterval(startCountdown);
+					   $('#countdown').html("")
+					   $('#startRefresh').css('background-color','#412263');
+					   $('#stopRefresh').css('background-color','#323233');" style="
     height: 10px;
     margin-bottom: 2px;
     padding: 6px;
