@@ -578,7 +578,6 @@ function loadData() {
 		$("#blocksLast24").html(count24+"<mark style='color:#752c2c;font-size: 24px;padding-left: 4px;'>"+count24Uncle+"</mark> / "+countToday+"<mark style='color:#752c2c;font-size: 24px;padding-left: 4px;'>"+countTodayUncle+"</mark>");
 		$("#minedETH").html(reward24.toFixed(1)+" / "+rewardToday.toFixed(1));
 		
-		console.log(lastBlockTime);
 		if (lastBlockTime<3600000)
 		$("#timeSinceLastBlock").html(humanizeDuration(lastBlockTime, 
 		{
