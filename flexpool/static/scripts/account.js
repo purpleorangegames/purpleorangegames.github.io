@@ -491,6 +491,7 @@ function applyPoolDonation(e) {
 }
 
 var reloadTimer=0
+var startCountdown=0
 function loadData() {
     $.get(`https://flexpool.io/api/v1/miner/${window.wallet}/details`, {}, (function(e) {
         loadBalance(e.result.min_payout_threshold);
