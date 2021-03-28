@@ -576,7 +576,7 @@ function loadData() {
 		$("#avgluck24").html(`<mark class="luck-value">${formatLuck(luck,true)}</mark>% <mark class="luck-value" style="color:orange;padding-left: 10px;">${formatLuck(luck,false)}</mark>%`), 
 		$("#avgluck24 mark").attr("data-luck", luck)
 		$("#blocksLast24").html(count24+"<mark style='color:#752c2c;font-size: 24px;padding-left: 4px;'>"+count24Uncle+"</mark> / "+countToday+"<mark style='color:#752c2c;font-size: 24px;padding-left: 4px;'>"+countTodayUncle+"</mark>");
-		$("#minedETH").html(reward24.toFixed(2)+" / "+rewardToday.toFixed(2));
+		$("#minedETH").html(reward24.toFixed(1)+" / "+rewardToday.toFixed(1));
 		$("#timeSinceLastBlock").html(humanizeDuration(lastBlockTime, 
 		{
 			units: ["h"],
