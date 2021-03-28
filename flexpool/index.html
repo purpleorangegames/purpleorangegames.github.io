@@ -95,10 +95,9 @@
             </div>-->
 		 
 	    <div class="settings">
-<div class="btn" onclick="reloadTimer=self.setInterval(reloadData, 120000);
+<div class="btn" onclick="reloadTimer=self.setInterval(function() { $('#countdown').html('120'); reloadData(); }, 120000);
 			  $('#startRefresh').css('background-color','#323233');
 			  $('#stopRefresh').css('background-color','#412263');
-			  $('#countdown').html('120')
 			  var startCountdown = setInterval(function() {
 				var seconds = parseInt($('#countdown').html());
 				seconds--;
