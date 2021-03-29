@@ -197,7 +197,7 @@ style="
                <div class="tooltip arrow-top balance-tooltip" id="tooltip-balance-bar" style="visibility: hidden; opacity: 0;"></div>
             </div>
             <div class="stat">
-		<select onchange="console.log($('#currencySelect option:selected').text());window.location.search=window.location.search.replace('?'+$('.currencyString').html().toUpperCase(),'?'+$('#currencySelect option:selected').text()).replace('?'+$('.currencyString').html().toLowerCase(),'?'+$('#currencySelect option:selected').text())" style="
+		<select onchange="window.location.search=(((window.location.search.match(/\?/g) || []).length<2)? window.location.search+"?"+$('#currencySelect option:selected').text():window.location.search.replace('?'+$('.currencyString').html().toUpperCase(),'?'+$('#currencySelect option:selected').text()).replace('?'+$('.currencyString').html().toLowerCase(),'?'+$('#currencySelect option:selected').text()))" style="
     margin-top: 4px;
     height: 26px;
     right: 0px;
