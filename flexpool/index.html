@@ -661,14 +661,23 @@ style="
       <link rel="stylesheet" href="/flexpool/static/css/cswitch.css">
       <link href="https://fonts.googleapis.com/css?family=Montserrat:700,600,500&amp;family=Roboto+Mono:wght@600&amp;display=swap" rel="stylesheet">
       <script src="/flexpool/static/scripts/jquery-3.4.1.min.js"></script><input id="lang-code" value="en" hidden="">
-      <script>LANGUAGE_CODE=$("#lang-code").val(),window.intercomSettings={app_id:"fdj6l8hj"}</script>
+      <script>LANGUAGE_CODE=$("#lang-code").val()</script>
 	  <script src="/flexpool/static/scripts/main.js"></script>
 	  <script src="/flexpool/static/scripts/highcharts.js"></script>
 	  <script src="/flexpool/static/scripts/moment.js"></script>
 	  <script src="/flexpool/static/scripts/nanobar.min.js">
 	  </script><script src="/flexpool/static/scripts/humanize-duration.js">
 	  </script><script src="/flexpool/static/scripts/util.js"></script>
-	  <script>window.wallet=window.location.search.split('?')[1],window.intercomSettings.address=window.wallet</script>
+
+	  <script>
+	  {
+	   window.wallet=window.location.search.split('?')[1];
+	   if ((window.location.search.match(/\?/g) || []).length>=2)
+	   	window.currency=window.location.search.split('?')[2];
+           else
+		window.currency='usd';
+	  }
+	  </script>
 
 	  <script>$('#wallet-textarea-for-copy').attr('value',window.wallet)</script>
 	  <script>$('#aWalletAddress').attr('href','https://etherscan.io/address/'+window.wallet)</script>
