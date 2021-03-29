@@ -692,7 +692,8 @@ style="
 	   	window.currency=window.location.search.split('?')[2];
            else
 		window.currency='usd';
-           $(".currencyString").html(window.currency.toUpperCase())
+           $(".currencyString").html(window.currency.toUpperCase());
+           $('#currencySelect').val(window.currency.toUpperCase());
 	  }
 	  </script>
 
