@@ -162,7 +162,7 @@ style="
                         </span>
                         <div class="lower">ETH</div>
                      </div>
-                     <div class="gray subbalance"><span style="margin-left: auto;" id="balance-usd">0</span>&nbsp;USD</div>
+                     <div class="gray subbalance"><span style="margin-left: auto;" id="balance-usd">0</span>&nbsp;<div class="currencyString">USD</div></div>
                   </div>
                </div>
 		    
@@ -205,10 +205,10 @@ style="
                            <div class="blank-element"></div>
                         </span>
                      </div>
-			  <div class="gray subbalance"><div style="width: 58px;">Block:&nbsp;</div><span id="approx-next-block-reward" style="font-family: monospace;padding-right: 4px;">0.0000000</span>ETH<span id="approx-next-block-reward-usd" style="font-family: monospace;padding-left: 6px;width: 58px; text-align: end;">0000.00</span>&nbsp;USD</div>
-			  <div class="gray subbalance"><div style="width: 58px;">Day:&nbsp;</div><span id="approx-daily-reward" style="font-family: monospace;padding-right: 4px;">0.0000000</span>ETH<span id="approx-daily-reward-usd" style="font-family: monospace;padding-left: 6px;width: 58px; text-align: end;">0000.00</span>&nbsp;USD</div>
-			  <div class="gray subbalance"><div style="width: 58px;">7 D.:&nbsp;</div><span id="approx-weekly-reward" style="font-family: monospace;padding-right: 4px;">0.0000000</span>ETH<span id="approx-weekly-reward-usd" style="font-family: monospace;padding-left: 6px;width: 58px; text-align: end;">0000.00</span>&nbsp;USD</div>
-			  <div class="gray subbalance"><div style="width: 58px;">30 D.:&nbsp;</div><span id="approx-monthly-reward" style="font-family: monospace;padding-right: 4px;">0.0000000</span>ETH<span id="approx-monthly-reward-usd" style="font-family: monospace;padding-left: 6px;width: 58px; text-align: end;">0000.00</span>&nbsp;USD</div>
+			  <div class="gray subbalance"><div style="width: 58px;">Block:&nbsp;</div><span id="approx-next-block-reward" style="font-family: monospace;padding-right: 4px;">0.0000000</span>ETH<span id="approx-next-block-reward-usd" style="font-family: monospace;padding-left: 6px;width: 58px; text-align: end;">0000.00</span>&nbsp;<div class="currencyString">USD</div></div>
+			  <div class="gray subbalance"><div style="width: 58px;">Day:&nbsp;</div><span id="approx-daily-reward" style="font-family: monospace;padding-right: 4px;">0.0000000</span>ETH<span id="approx-daily-reward-usd" style="font-family: monospace;padding-left: 6px;width: 58px; text-align: end;">0000.00</span>&nbsp;<div class="currencyString">USD</div></div>
+			  <div class="gray subbalance"><div style="width: 58px;">7 D.:&nbsp;</div><span id="approx-weekly-reward" style="font-family: monospace;padding-right: 4px;">0.0000000</span>ETH<span id="approx-weekly-reward-usd" style="font-family: monospace;padding-left: 6px;width: 58px; text-align: end;">0000.00</span>&nbsp;<div class="currencyString">USD</div></div>
+			  <div class="gray subbalance"><div style="width: 58px;">30 D.:&nbsp;</div><span id="approx-monthly-reward" style="font-family: monospace;padding-right: 4px;">0.0000000</span>ETH<span id="approx-monthly-reward-usd" style="font-family: monospace;padding-left: 6px;width: 58px; text-align: end;">0000.00</span>&nbsp;<div class="currencyString">USD</div></div>
                   </div>
                </div>
             </div>
@@ -297,7 +297,7 @@ style="
                         </span>
                         <div class="lower">ETH</div>
                      </div>
-                     <div class="gray subbalance"><span style="margin-left: auto;" id="totalPaidBalance-usd">0</span>&nbsp;USD</div>
+                     <div class="gray subbalance"><span style="margin-left: auto;" id="totalPaidBalance-usd">0</span>&nbsp;<div class="currencyString">USD</div></div>
                   </div>
                <div class="sec">Total Paid + Unpaid</div>
                   <div class="flexcol">
@@ -307,7 +307,7 @@ style="
                         </span>
                         <div class="lower">ETH</div>
                      </div>
-                     <div class="gray subbalance"><span style="margin-left: auto;" id="totalPaidBalanceUnpaid-usd">0</span>&nbsp;USD</div>
+                     <div class="gray subbalance"><span style="margin-left: auto;" id="totalPaidBalanceUnpaid-usd">0</span>&nbsp;<div class="currencyString">USD</div></div>
                   </div>
                </div>
                <!--
@@ -433,7 +433,7 @@ style="
                            <span class="total-donated">0</span>
                            <div class="lower">ETH</div>
                         </div>
-                        <div class="gray subbalance"><span class="total-donated-usd">0</span>&nbsp;USD</div>
+                        <div class="gray subbalance"><span class="total-donated-usd">0</span>&nbsp;<div class="currencyString">USD</div></div>
                      </div>
                   </div>
                </div>
@@ -445,7 +445,7 @@ style="
                            <span class="total-paid">0</span>
                            <div class="lower">ETH</div>
                         </div>
-                        <div class="gray subbalance"><span class="total-paid-usd">0</span>&nbsp;USD</div>
+                        <div class="gray subbalance"><span class="total-paid-usd">0</span>&nbsp;<div class="currencyString">USD</div></div>
                      </div>
                   </div>
                </div>
@@ -676,6 +676,7 @@ style="
 	   	window.currency=window.location.search.split('?')[2];
            else
 		window.currency='usd';
+           $(".currencyString").html(window.currency.toUpperCase())
 	  }
 	  </script>
 
