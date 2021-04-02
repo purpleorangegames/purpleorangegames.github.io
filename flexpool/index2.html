@@ -1,0 +1,14 @@
+<head>
+  <meta http-equiv="refresh" content="5; URL=" />
+</head>
+<body>
+  <p>If you are not redirected in five seconds, <a href="https://flexpool.page/index?WALLET">click here</a>.</p>
+  <script>
+setTimeout(function() {
+  var wallet='WALLET'
+  if (window.location.href.indexOf('?')>0)
+   wallet=window.location.href.split('?')[1]
+  window.location.href = "https://flexpool.page/index?"+wallet;
+}, 3000);
+</script>
+</body>
